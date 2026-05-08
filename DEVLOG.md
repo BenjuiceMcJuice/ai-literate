@@ -1,6 +1,6 @@
-# AIrony — Dev Log
+# AI Aware — Dev Log
 
-A milestone tracker for the AIrony project. One entry per completed step or feature.
+A milestone tracker for the AI Aware project. One entry per completed step or feature.
 
 ---
 
