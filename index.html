@@ -88,42 +88,87 @@
       grid-template-columns: 220px 1fr;
       gap: 32px;
     }
-    /* ── Mobile nav strip ── */
-    .mobile-nav {
+    /* ── Mobile contents button + overlay ── */
+    .mobile-contents-btn {
       display: none;
-      overflow-x: auto;
-      overflow-y: hidden;
-      overscroll-behavior-x: contain;
-      touch-action: pan-x;
-      scrollbar-width: none;
+      position: sticky;
+      top: 56px;
+      z-index: 90;
+      width: 100%;
+      padding: 10px 16px;
       background: var(--surface);
+      border: none;
       border-bottom: 1px solid var(--border);
-      padding: 8px 12px;
-      gap: 6px;
-      white-space: nowrap;
-    }
-    .mobile-nav::-webkit-scrollbar { display: none; }
-    .mobile-nav-item {
-      display: inline-block;
-      padding: 5px 12px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 99px;
-      cursor: pointer;
-      white-space: nowrap;
       font-family: inherit;
-      transition: all 0.15s;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-align: left;
+      cursor: pointer;
     }
-    .mobile-nav-item:hover { color: var(--blue); border-color: var(--blue-mid); }
-    .mobile-nav-item.active { color: var(--blue); background: var(--blue-light); border-color: var(--blue-mid); font-weight: 600; }
+    .mobile-contents-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.4);
+    }
+    .mobile-contents-overlay.open { display: block; }
+    .mobile-contents-panel {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      background: var(--surface);
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      padding: 16px 0 24px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .mobile-contents-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+    .mobile-contents-header span {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+    .mobile-contents-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0 4px;
+      font-family: inherit;
+    }
+    .mobile-contents-link {
+      display: block;
+      width: 100%;
+      padding: 11px 16px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+    }
+    .mobile-contents-link:active { background: var(--blue-light); }
+    .mobile-contents-link.active { color: var(--blue); border-left-color: var(--blue); background: var(--blue-light); font-weight: 600; }
 
     @media (max-width: 700px) {
       .layout { grid-template-columns: 1fr; }
       .sidebar { display: none; }
-      .mobile-nav { display: flex; }
-      .section { padding: 20px 16px; scroll-margin-top: 110px; }
+      .mobile-contents-btn { display: block; }
+      .section { padding: 20px 16px; scroll-margin-top: 104px; }
     }
 
     /* ── Sidebar ── */
@@ -266,20 +311,35 @@
     .compare-col li { font-size: 0.88rem; margin-bottom: 5px; }
 
     /* Example chips */
-    .example-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
+    /* Use cases table */
+    .use-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.88rem; }
+    .use-table th {
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border);
     }
-    .example-chip {
-      background: var(--blue-light);
-      border: 1px solid var(--blue-mid);
-      color: var(--blue);
+    .use-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .use-table tr:last-child td { border-bottom: none; }
+    .use-table tr:hover td { background: var(--bg); }
+    .use-table td:nth-child(3) { color: var(--text-muted); font-style: italic; font-size: 0.83rem; }
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
       border-radius: 99px;
-      padding: 5px 14px;
-      font-size: 0.82rem;
-      font-weight: 500;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .badge-simple { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-moderate { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+    .badge-complex { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+    @media (max-width: 500px) {
+      .use-table th:nth-child(3), .use-table td:nth-child(3) { display: none; }
     }
 
     /* Step list */
@@ -343,19 +403,27 @@
   </div>
 </header>
 
-<div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-item active" onclick="jumpTo('s0')">Intro</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s1')">1. What is GenAI?</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s2')">2. Where it gets info</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s3')">3. How to interact</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s4')">4. Ask vs. Do</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s5')">5. Tokens</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s6')">6. Hallucinations</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s7')">7. Privacy</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s8')">8. Cheating?</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s9')">9. Getting the most</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s10')">10. Use cases</button>
-  <button class="mobile-nav-item" onclick="jumpTo('s11')">11. Big projects</button>
+<button class="mobile-contents-btn" id="mobileContentsBtn" onclick="openContents()">☰ Contents</button>
+
+<div class="mobile-contents-overlay" id="mobileContentsOverlay" onclick="closeContentsOnBackdrop(event)">
+  <div class="mobile-contents-panel">
+    <div class="mobile-contents-header">
+      <span>Contents</span>
+      <button class="mobile-contents-close" onclick="closeContents()">✕</button>
+    </div>
+    <button class="mobile-contents-link active" onclick="jumpToMobile('s0')">Introduction</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s1')">1. What is Generative AI?</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s2')">2. Where Does it Get its Information?</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s3')">3. How to Interact With it</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s4')">4. Ask vs. Do</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s5')">5. Understanding Tokens</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s6')">6. Hallucinations</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s7')">7. Privacy and Data</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s8')">8. Is it Cheating?</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s9')">9. Getting the Most Out of AI</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s10')">10. Example Use Cases</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s11')">11. Working Through a Bigger Project</button>
+  </div>
 </div>
 
 <div class="layout">
@@ -538,21 +606,74 @@
 
     <section class="section" id="s10">
       <div class="section-number">Section 10</div>
-      <h2>Example Use Cases — From Simple to Complex</h2>
+      <h2>Example Use Cases</h2>
       <p>To give a sense of the range of what's possible:</p>
-      <div class="example-list">
-        <span class="example-chip">Answering factual questions</span>
-        <span class="example-chip">Explaining concepts in plain language</span>
-        <span class="example-chip">Rewriting text in a different tone</span>
-        <span class="example-chip">Drafting emails from rough notes</span>
-        <span class="example-chip">Structuring a project plan</span>
-        <span class="example-chip">Comparing two documents</span>
-        <span class="example-chip">Summarising long content</span>
-        <span class="example-chip">Analysing data tables</span>
-        <span class="example-chip">Writing or debugging code</span>
-        <span class="example-chip">Generating ideas</span>
-        <span class="example-chip">Combining tasks for bigger projects</span>
-      </div>
+      <table class="use-table">
+        <thead>
+          <tr>
+            <th>Use case</th>
+            <th>Complexity</th>
+            <th>Example prompt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Answering factual questions</td>
+            <td><span class="badge badge-simple">Simple</span></td>
+            <td>"What does API stand for and what does it do?"</td>
+          </tr>
+          <tr>
+            <td>Explaining concepts in plain language</td>
+            <td><span class="badge badge-simple">Simple</span></td>
+            <td>"Explain machine learning like I'm 12"</td>
+          </tr>
+          <tr>
+            <td>Rewriting text in a different tone</td>
+            <td><span class="badge badge-simple">Simple</span></td>
+            <td>"Rewrite this email to sound more friendly and less formal"</td>
+          </tr>
+          <tr>
+            <td>Drafting from rough notes</td>
+            <td><span class="badge badge-simple">Simple</span></td>
+            <td>"Turn these bullet points into a professional email"</td>
+          </tr>
+          <tr>
+            <td>Generating ideas</td>
+            <td><span class="badge badge-simple">Simple</span></td>
+            <td>"Give me 10 ideas for a team away-day on a tight budget"</td>
+          </tr>
+          <tr>
+            <td>Summarising long content</td>
+            <td><span class="badge badge-moderate">Moderate</span></td>
+            <td>"Summarise this 20-page report in 5 bullet points"</td>
+          </tr>
+          <tr>
+            <td>Comparing two documents</td>
+            <td><span class="badge badge-moderate">Moderate</span></td>
+            <td>"Here are two policy drafts — what are the key differences?"</td>
+          </tr>
+          <tr>
+            <td>Structuring a project plan</td>
+            <td><span class="badge badge-moderate">Moderate</span></td>
+            <td>"I need to migrate our database — suggest a phased approach"</td>
+          </tr>
+          <tr>
+            <td>Analysing data</td>
+            <td><span class="badge badge-moderate">Moderate</span></td>
+            <td>"Here's our sales data for Q1 — what trends do you see?"</td>
+          </tr>
+          <tr>
+            <td>Writing or debugging code</td>
+            <td><span class="badge badge-moderate">Moderate</span></td>
+            <td>"Here's my Excel formula — why isn't it working?"</td>
+          </tr>
+          <tr>
+            <td>Multi-step research and drafting</td>
+            <td><span class="badge badge-complex">Complex</span></td>
+            <td>"Help me research, structure, and draft a business case for X"</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <section class="section" id="s11">
@@ -585,12 +706,34 @@
 <script>
   var sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11'];
   var navItems = document.querySelectorAll('.nav-item');
-  var mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+  var mobileLinks = document.querySelectorAll('.mobile-contents-link');
   var progressBar = document.getElementById('progressBar');
   var progressLabel = document.getElementById('progressLabel');
+  var overlay = document.getElementById('mobileContentsOverlay');
 
   function jumpTo(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function jumpToMobile(id) {
+    closeContents();
+    setTimeout(function() {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+
+  function openContents() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeContents() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeContentsOnBackdrop(e) {
+    if (e.target === overlay) closeContents();
   }
 
   function getActiveSection() {
@@ -608,11 +751,9 @@
     navItems.forEach(function(item, i) {
       item.classList.toggle('active', i === active);
     });
-    mobileNavItems.forEach(function(item, i) {
+    mobileLinks.forEach(function(item, i) {
       item.classList.toggle('active', i === active);
     });
-    var activeItem = mobileNavItems[active];
-    if (activeItem) activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     var pct = ((active + 1) / sections.length) * 100;
     progressBar.style.width = pct + '%';
     progressLabel.textContent = 'Section ' + (active + 1) + ' of ' + sections.length;
