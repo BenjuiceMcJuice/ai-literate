@@ -1,10 +1,15 @@
-# AI Sense — Dev Log
+# AIrony — Dev Log
 
-A milestone tracker for the AI Sense project. One entry per completed step or feature.
+A milestone tracker for the AIrony project. One entry per completed step or feature.
 
 ---
 
 ## Milestones
+
+### v1.1 — Renamed to AIrony (2026-05-08)
+- Project renamed from AI Sense → AIrony across all files
+- GitHub repo renamed to BenjuiceMcJuice/AIrony
+- Local folder renamed to AIrony/
 
 ### v1.0 — Initial launch (2026-05-08)
 - Single HTML file app built from the GenAI best practices guide PDF
