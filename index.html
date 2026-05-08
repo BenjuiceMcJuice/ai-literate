@@ -314,18 +314,18 @@
   <!-- Sidebar nav -->
   <nav class="sidebar" aria-label="Sections">
     <div class="sidebar-title">Contents</div>
-    <button class="nav-item active" onclick="scrollTo('s0')">Introduction</button>
-    <button class="nav-item" onclick="scrollTo('s1')">1. What is GenAI?</button>
-    <button class="nav-item" onclick="scrollTo('s2')">2. Where it gets info</button>
-    <button class="nav-item" onclick="scrollTo('s3')">3. How to interact</button>
-    <button class="nav-item" onclick="scrollTo('s4')">4. Ask vs. Do</button>
-    <button class="nav-item" onclick="scrollTo('s5')">5. Tokens & limits</button>
-    <button class="nav-item" onclick="scrollTo('s6')">6. Hallucinations</button>
-    <button class="nav-item" onclick="scrollTo('s7')">7. Privacy & data</button>
-    <button class="nav-item" onclick="scrollTo('s8')">8. Is it cheating?</button>
-    <button class="nav-item" onclick="scrollTo('s9')">9. Getting the most</button>
-    <button class="nav-item" onclick="scrollTo('s10')">10. Use cases</button>
-    <button class="nav-item" onclick="scrollTo('s11')">11. Bigger projects</button>
+    <button class="nav-item active" onclick="jumpTo('s0')">Introduction</button>
+    <button class="nav-item" onclick="jumpTo('s1')">1. What is Generative AI?</button>
+    <button class="nav-item" onclick="jumpTo('s2')">2. Where Does it Get its Information?</button>
+    <button class="nav-item" onclick="jumpTo('s3')">3. How to Interact With it</button>
+    <button class="nav-item" onclick="jumpTo('s4')">4. Ask vs. Do</button>
+    <button class="nav-item" onclick="jumpTo('s5')">5. Understanding Tokens</button>
+    <button class="nav-item" onclick="jumpTo('s6')">6. Hallucinations</button>
+    <button class="nav-item" onclick="jumpTo('s7')">7. Privacy and Data</button>
+    <button class="nav-item" onclick="jumpTo('s8')">8. Is it Cheating?</button>
+    <button class="nav-item" onclick="jumpTo('s9')">9. Getting the Most Out of AI</button>
+    <button class="nav-item" onclick="jumpTo('s10')">10. Example Use Cases</button>
+    <button class="nav-item" onclick="jumpTo('s11')">11. Working Through a Bigger Project</button>
   </nav>
 
   <!-- Main content -->
@@ -539,7 +539,7 @@
   var progressBar = document.getElementById('progressBar');
   var progressLabel = document.getElementById('progressLabel');
 
-  function scrollTo(id) {
+  function jumpTo(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
