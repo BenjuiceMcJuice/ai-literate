@@ -88,16 +88,48 @@
       grid-template-columns: 220px 1fr;
       gap: 32px;
     }
+    /* ── Mobile nav strip ── */
+    .mobile-nav {
+      display: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 12px;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .mobile-nav::-webkit-scrollbar { display: none; }
+    .mobile-nav-item {
+      display: inline-block;
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .mobile-nav-item:hover { color: var(--blue); border-color: var(--blue-mid); }
+    .mobile-nav-item.active { color: var(--blue); background: var(--blue-light); border-color: var(--blue-mid); font-weight: 600; }
+
     @media (max-width: 700px) {
       .layout { grid-template-columns: 1fr; }
       .sidebar { display: none; }
+      .mobile-nav { display: flex; }
+      .section { padding: 20px 16px; scroll-margin-top: 110px; }
     }
 
     /* ── Sidebar ── */
     .sidebar {
       position: sticky;
       top: 72px;
-      height: fit-content;
+      max-height: calc(100vh - 90px);
+      overflow-y: auto;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -308,6 +340,21 @@
     <div class="progress-label" id="progressLabel">Section 1 of 11</div>
   </div>
 </header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-item active" onclick="jumpTo('s0')">Intro</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s1')">1. What is GenAI?</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s2')">2. Where it gets info</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s3')">3. How to interact</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s4')">4. Ask vs. Do</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s5')">5. Tokens</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s6')">6. Hallucinations</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s7')">7. Privacy</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s8')">8. Cheating?</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s9')">9. Getting the most</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s10')">10. Use cases</button>
+  <button class="mobile-nav-item" onclick="jumpTo('s11')">11. Big projects</button>
+</div>
 
 <div class="layout">
 
@@ -536,6 +583,7 @@
 <script>
   var sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11'];
   var navItems = document.querySelectorAll('.nav-item');
+  var mobileNavItems = document.querySelectorAll('.mobile-nav-item');
   var progressBar = document.getElementById('progressBar');
   var progressLabel = document.getElementById('progressLabel');
 
@@ -558,6 +606,11 @@
     navItems.forEach(function(item, i) {
       item.classList.toggle('active', i === active);
     });
+    mobileNavItems.forEach(function(item, i) {
+      item.classList.toggle('active', i === active);
+    });
+    var activeItem = mobileNavItems[active];
+    if (activeItem) activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     var pct = ((active + 1) / sections.length) * 100;
     progressBar.style.width = pct + '%';
     progressLabel.textContent = 'Section ' + (active + 1) + ' of ' + sections.length;
