@@ -1,10 +1,15 @@
-# AI Aware — Dev Log
+# AI-Literate — Dev Log
 
 A milestone tracker for the AI Aware project. One entry per completed step or feature.
 
 ---
 
 ## Milestones
+
+### v1.2 — Renamed to AI-Literate (2026-05-21)
+- Project renamed from AIAware → AI-Literate (AIAware is an existing company)
+- Title, logo, hero, and footer updated in index.html
+- GitHub repo renamed to BenjuiceMcJuice/ai-literate
 
 ### v1.1 — Renamed to AIrony (2026-05-08)
 - Project renamed from AI Sense → AIrony across all files
