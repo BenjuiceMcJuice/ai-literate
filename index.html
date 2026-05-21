@@ -380,6 +380,18 @@
       color: var(--text-muted);
     }
 
+    /* Vocabulary chips */
+    .chip {
+      display: inline-block;
+      background: #f3f0ff;
+      border: 1px solid #e0d9f7;
+      color: #7c3aed;
+      border-radius: 99px;
+      padding: 2px 10px;
+      font-size: 0.8rem;
+      margin: 2px;
+    }
+
     /* Exercise cards */
     .exercise {
       border: 1px solid #e0d9f7;
@@ -458,7 +470,7 @@
     <div class="progress-bar-wrap">
       <div class="progress-bar" id="progressBar"></div>
     </div>
-    <div class="progress-label" id="progressLabel">Section 1 of 12</div>
+    <div class="progress-label" id="progressLabel">Section 1 of 13</div>
   </div>
 </header>
 
@@ -482,7 +494,8 @@
     <button class="mobile-contents-link" onclick="jumpToMobile('s9')">9. Getting the Most Out of AI</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s10')">10. Example Use Cases</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s11')">11. Working Through a Bigger Project</button>
-    <button class="mobile-contents-link" onclick="jumpToMobile('s12')">12. Try It Yourself</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s12')">12. Can You Tell if It's AI?</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s13')">13. Try It Yourself</button>
   </div>
 </div>
 
@@ -503,7 +516,8 @@
     <button class="nav-item" onclick="jumpTo('s9')">9. Getting the Most Out of AI</button>
     <button class="nav-item" onclick="jumpTo('s10')">10. Example Use Cases</button>
     <button class="nav-item" onclick="jumpTo('s11')">11. Working Through a Bigger Project</button>
-    <button class="nav-item" onclick="jumpTo('s12')">12. Try It Yourself</button>
+    <button class="nav-item" onclick="jumpTo('s12')">12. Can You Tell if It's AI?</button>
+    <button class="nav-item" onclick="jumpTo('s13')">13. Try It Yourself</button>
   </nav>
 
   <!-- Main content -->
@@ -514,7 +528,7 @@
       <h2>AI Aware</h2>
       <p class="tagline">A practical, no-nonsense guide to using AI — whoever you are, whatever you do.</p>
       <p>Whether you've never opened an AI tool or you use one every day, this guide will help you understand what's actually going on, how to get the most out of it, and — just as importantly — where to be careful.</p>
-      <span class="pill">12 sections · 12 min read</span>
+      <span class="pill">13 sections · 14 min read</span>
     </section>
 
     <section class="section" id="s1">
@@ -775,6 +789,73 @@
 
     <section class="section" id="s12">
       <div class="section-number">Section 12</div>
+      <h2>Can You Tell if Something Was Written by AI?</h2>
+      <p>As AI becomes part of everyday writing, being able to recognise AI-generated text is increasingly useful — whether you're reviewing work, reading online content, or wondering if that unusually polished email came from a person or a prompt.</p>
+      <p>No single signal is definitive. But certain patterns appear so consistently they've become well-known tells.</p>
+
+      <p><strong>Structural habits</strong></p>
+      <ul>
+        <li>Bullet points and numbered lists for everything, even when prose would be more natural</li>
+        <li>Paragraphs that are all roughly the same length</li>
+        <li>Everything neatly balanced — both sides covered, tidy conclusion — even when not asked</li>
+        <li>Responses that end with a sentence restating what was just said</li>
+        <li>Headers and sub-headers in what should be a simple message</li>
+      </ul>
+
+      <p><strong>Vocabulary tells</strong></p>
+      <p style="margin-bottom: 6px; color: var(--text-muted); font-size: 0.93rem;">These words appear far more often in AI output than in ordinary human writing:</p>
+      <div style="margin: 4px 0 16px; line-height: 2.4;">
+        <span class="chip">delve</span>
+        <span class="chip">nuanced</span>
+        <span class="chip">multifaceted</span>
+        <span class="chip">navigate</span>
+        <span class="chip">tapestry</span>
+        <span class="chip">pivotal</span>
+        <span class="chip">underscores</span>
+        <span class="chip">foster</span>
+        <span class="chip">embark</span>
+        <span class="chip">testament</span>
+        <span class="chip">leverage</span>
+        <span class="chip">comprehensive</span>
+        <span class="chip">robust</span>
+        <span class="chip">realm</span>
+        <span class="chip">crucial</span>
+        <span class="chip">vital</span>
+      </div>
+
+      <p><strong>Tone and style</strong></p>
+      <ul>
+        <li>Hedges constantly — "it's worth noting that", "many experts believe", "it's important to recognise"</li>
+        <li>Diplomatically balanced on everything, rarely takes a strong position even when one was asked for</li>
+        <li>No typos, no colloquialisms, no regional expressions or slang</li>
+        <li>No personal anecdotes or specific detail — examples are always generic and safe</li>
+        <li>Perfect punctuation throughout, even in casual messages</li>
+        <li>Heavy use of the long dash — like this — where a comma or nothing would be more natural</li>
+      </ul>
+
+      <div class="callout callout-warn">
+        <div class="callout-label">The most reliable signal: voice change</div>
+        <p>When someone who normally writes casually suddenly produces three well-structured paragraphs with a balanced argument and a closing thought — the words might be fine, but the voice isn't theirs. For personal or workplace messages, this is the biggest flag of all.</p>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">If you're sending AI-assisted content</div>
+        <p>Read it back as yourself before you send. Cut the unnecessary structure. Add a specific detail, your actual opinion, or something only you would say. Make it sound like you — because ultimately, you're responsible for it.</p>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-label">If you're reading and something feels off</div>
+        <p>Look for clusters of signals, not one thing in isolation. Compare it to how the person normally writes. If it matters — a job application, a piece of journalism, a colleague's report — it's reasonable to ask directly.</p>
+      </div>
+
+      <div class="callout callout-warn">
+        <div class="callout-label">On AI detection tools</div>
+        <p>Tools like GPTZero exist to flag AI-written content automatically, but they have high false positive rates — legitimate human writing regularly gets flagged as AI. Don't use them to accuse someone. Treat them as one signal among several, not a verdict.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s13">
+      <div class="section-number">Section 13</div>
       <h2>Try It Yourself</h2>
       <p>The best way to internalise any of this is to put it into practice. Each exercise below presents a realistic scenario — take a moment to think before revealing the answer.</p>
 
@@ -893,7 +974,7 @@
 </footer>
 
 <script>
-  var sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12'];
+  var sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13'];
   var navItems = document.querySelectorAll('.nav-item');
   var mobileLinks = document.querySelectorAll('.mobile-contents-link');
   var progressBar = document.getElementById('progressBar');
