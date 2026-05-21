@@ -380,6 +380,65 @@
       color: var(--text-muted);
     }
 
+    /* Exercise cards */
+    .exercise {
+      border: 1px solid #e0d9f7;
+      border-top: 3px solid #7c3aed;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      background: #faf8ff;
+    }
+    .exercise:last-child { margin-bottom: 0; }
+    .exercise-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #7c3aed;
+      margin-bottom: 4px;
+    }
+    .exercise h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .scenario-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid #7c3aed;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+    .reveal-btn {
+      background: #7c3aed;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.15s;
+    }
+    .reveal-btn:hover { background: #6d28d9; }
+    .exercise-answer {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #e0d9f7;
+    }
+    .exercise-answer.open { display: block; }
+
     /* Footer */
     footer {
       text-align: center;
@@ -399,7 +458,7 @@
     <div class="progress-bar-wrap">
       <div class="progress-bar" id="progressBar"></div>
     </div>
-    <div class="progress-label" id="progressLabel">Section 1 of 11</div>
+    <div class="progress-label" id="progressLabel">Section 1 of 12</div>
   </div>
 </header>
 
@@ -423,6 +482,7 @@
     <button class="mobile-contents-link" onclick="jumpToMobile('s9')">9. Getting the Most Out of AI</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s10')">10. Example Use Cases</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s11')">11. Working Through a Bigger Project</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s12')">12. Try It Yourself</button>
   </div>
 </div>
 
@@ -443,6 +503,7 @@
     <button class="nav-item" onclick="jumpTo('s9')">9. Getting the Most Out of AI</button>
     <button class="nav-item" onclick="jumpTo('s10')">10. Example Use Cases</button>
     <button class="nav-item" onclick="jumpTo('s11')">11. Working Through a Bigger Project</button>
+    <button class="nav-item" onclick="jumpTo('s12')">12. Try It Yourself</button>
   </nav>
 
   <!-- Main content -->
@@ -453,7 +514,7 @@
       <h2>AI Aware</h2>
       <p class="tagline">A practical, no-nonsense guide to using AI — whoever you are, whatever you do.</p>
       <p>Whether you've never opened an AI tool or you use one every day, this guide will help you understand what's actually going on, how to get the most out of it, and — just as importantly — where to be careful.</p>
-      <span class="pill">11 sections · 10 min read</span>
+      <span class="pill">12 sections · 12 min read</span>
     </section>
 
     <section class="section" id="s1">
@@ -547,6 +608,17 @@
         <div class="callout-label">Remember</div>
         <p>AI is a powerful tool for drafting, structuring, summarising, and generating ideas. It is <strong>not</strong> a reliable source of ground truth on its own.</p>
       </div>
+      <p style="margin-top: 24px; font-weight: 700; color: var(--text);">There's a related problem that's just as important.</p>
+      <p>Hallucination is about AI getting facts wrong. This is different: AI will also construct fluent, well-structured, persuasive-sounding arguments for almost any premise you give it — including wrong, misleading, or one-sided ones. It doesn't push back. It builds on what you give it.</p>
+      <div class="callout callout-warn">
+        <div class="callout-label">If you're creating content with AI</div>
+        <p>If your starting idea is flawed, biased, or simply wrong, AI will help you argue it convincingly — without flagging the problem. The more polished the output, the easier it is to mistake fluency for validity. <strong>Don't treat AI's confidence as confirmation that you're right.</strong></p>
+      </div>
+      <div class="callout callout-warn">
+        <div class="callout-label">If you're reading AI-assisted content</div>
+        <p>A well-structured, articulate argument used to require real effort and at least some grasp of the subject. That bar no longer exists. <strong>The quality of the writing tells you nothing about the quality of the underlying thinking.</strong> Read with the same scepticism you'd apply to any unverified source — perhaps more.</p>
+      </div>
+      <blockquote>An influencer with a flat-earth theory and access to AI can now produce polished, coherent, compelling content at scale. The arguments didn't get more accurate — they just got much easier to make, and much harder to dismiss at a glance.</blockquote>
     </section>
 
     <section class="section" id="s7">
@@ -701,6 +773,116 @@
       <p style="margin-top:16px; color: var(--text-muted); font-style: italic; font-size: 0.93rem;">This is a living guide. As AI tools evolve, some specifics will change — but the core principles of clarity, scepticism, ownership, and common sense will remain relevant.</p>
     </section>
 
+    <section class="section" id="s12">
+      <div class="section-number">Section 12</div>
+      <h2>Try It Yourself</h2>
+      <p>The best way to internalise any of this is to put it into practice. Each exercise below presents a realistic scenario — take a moment to think before revealing the answer.</p>
+
+      <div class="exercise">
+        <div class="exercise-label">Exercise 1 — Prompting (Section 4)</div>
+        <h3>Fix the prompt</h3>
+        <p>Someone needs help with an upcoming presentation and sends this to an AI tool:</p>
+        <div class="scenario-box">"Can you help with my presentation?"</div>
+        <p>What's missing? How would you improve it?</p>
+        <button class="reveal-btn" onclick="toggleExercise('ex1', this)">See improved version ▾</button>
+        <div class="exercise-answer" id="ex1">
+          <div class="compare">
+            <div class="compare-col no">
+              <h4>Original — missing</h4>
+              <ul>
+                <li>Who the audience is</li>
+                <li>What the topic or goal is</li>
+                <li>How long it needs to be</li>
+                <li>Any tone or format guidance</li>
+              </ul>
+            </div>
+            <div class="compare-col yes">
+              <h4>Improved — gives AI</h4>
+              <ul>
+                <li>Audience: senior leadership</li>
+                <li>Topic: Q2 sales results</li>
+                <li>Length: 10 minutes</li>
+                <li>A structure and a tone to aim for</li>
+              </ul>
+            </div>
+          </div>
+          <div class="scenario-box" style="font-style: normal; color: var(--text);">"I have a 10-minute presentation to the senior leadership team on Friday about our Q2 sales results. Help me structure it — I want to open with the headline number, explain what drove it, then close with what we're doing next. Keep the language direct and clear."</div>
+          <div class="callout callout-tip">
+            <div class="callout-label">Why it works</div>
+            <p>The AI now has the audience, the goal, the structure, and the tone. It can give you something genuinely useful rather than a generic template.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-label">Exercise 2 — Hallucinations (Section 6)</div>
+        <h3>Spot the hallucination</h3>
+        <p>You ask AI: <em>"When was Slack founded, and who created it?"</em> It responds:</p>
+        <div class="scenario-box">"Slack was founded in 2013 by Stewart Butterfield, along with co-founders Cal Henderson and Serguei Mourachov. It grew out of an internal tool built for a gaming company called Tiny Speck. Slack was acquired by Microsoft in 2021 for approximately $27.7 billion."</div>
+        <p>Is everything here accurate? What would you check before sharing this?</p>
+        <button class="reveal-btn" onclick="toggleExercise('ex2', this)">See what's wrong ▾</button>
+        <div class="exercise-answer" id="ex2">
+          <div class="callout callout-warn">
+            <div class="callout-label">The error</div>
+            <p>Slack was acquired by <strong>Salesforce</strong> — not Microsoft — in 2021, for approximately $27.7 billion. Microsoft is a direct competitor to Slack via Microsoft Teams. The rest of the response is broadly accurate.</p>
+          </div>
+          <p>This is a classic hallucination pattern: most of the answer is correct, which builds false confidence. The error is specific, plausible-sounding, and exactly the kind of thing that gets copied and forwarded without a second look.</p>
+          <div class="callout callout-info">
+            <div class="callout-label">The habit to build</div>
+            <p>Any specific claim — names, dates, figures, company events — is worth a 30-second check before you share it. The more specific it sounds, the more suspicious you should be.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-label">Exercise 3 — Breaking it down (Section 11)</div>
+        <h3>Plan the approach</h3>
+        <p>Your manager asks you to produce a short competitor analysis comparing your main product to three rivals — using AI to help. Before you open a single conversation, how would you approach it?</p>
+        <p style="color: var(--text-muted); font-size: 0.93rem;">Think through the steps involved, then reveal a suggested approach.</p>
+        <button class="reveal-btn" onclick="toggleExercise('ex3', this)">See suggested approach ▾</button>
+        <div class="exercise-answer" id="ex3">
+          <ol class="step-list">
+            <li>Open a fresh conversation. Tell AI the goal and your context — what your product does, who the three rivals are, and what the analysis is for.</li>
+            <li>Ask AI to suggest a structure before you start. Agree on the headings (e.g. pricing, key features, target audience, weaknesses).</li>
+            <li>Research each competitor in a separate conversation — one per chat. Ask what AI knows, and note anything surprising to verify later.</li>
+            <li>Bring the findings into a new conversation and paste in your notes. Ask AI to compare the competitors side by side against your agreed structure.</li>
+            <li>Ask AI to draft a summary. Review it — add anything AI couldn't know (internal context, recent news, your own experience of the rivals).</li>
+            <li>Verify any specific claims — prices, features, company details — before the report goes anywhere.</li>
+          </ol>
+          <div class="callout callout-tip">
+            <div class="callout-label">Why this works</div>
+            <p>Breaking the task into steps keeps each conversation focused. AI produces significantly better output when it has one clear job, rather than trying to do everything at once.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-label">Exercise 4 — Privacy (Section 7)</div>
+        <h3>What shouldn't be in there?</h3>
+        <p>Someone is about to send this to a public AI tool to get help writing a performance review:</p>
+        <div class="scenario-box">"Can you help me write a performance review for one of my team? Her name is Sarah Johnson, employee ID EMP-4471. She's been underperforming — her Q3 sales were £43,200 against a target of £68,000. She had two verbal warnings in September. I want it to be balanced but honest."</div>
+        <p>What should be removed or changed before sending?</p>
+        <button class="reveal-btn" onclick="toggleExercise('ex4', this)">See what to change ▾</button>
+        <div class="exercise-answer" id="ex4">
+          <div class="callout callout-warn">
+            <div class="callout-label">What to remove</div>
+            <ul>
+              <li><strong>Full name</strong> — "Sarah Johnson" is personal data. Use "a team member" instead.</li>
+              <li><strong>Employee ID</strong> — EMP-4471 is an identifiable internal record. Remove it entirely.</li>
+              <li><strong>Exact figures tied to an individual</strong> — the specific sales numbers combined with a name create a detailed personal record. Use a percentage shortfall if the context is needed.</li>
+              <li><strong>Disciplinary details</strong> — verbal warnings are sensitive HR data that should never go into an external tool without explicit organisational approval.</li>
+            </ul>
+          </div>
+          <div class="scenario-box" style="font-style: normal; color: var(--text);">"Can you help me write a performance review for a team member? They've been underperforming — hitting around 63% of their sales target last quarter. I want it to be balanced but honest."</div>
+          <div class="callout callout-tip">
+            <div class="callout-label">The rule of thumb</div>
+            <p>Before sending anything to an external AI tool, ask: if this conversation were made public, would anyone be identifiable or embarrassed? If yes, anonymise it first.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
   </main>
 </div>
 
@@ -711,7 +893,7 @@
 </footer>
 
 <script>
-  var sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11'];
+  var sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12'];
   var navItems = document.querySelectorAll('.nav-item');
   var mobileLinks = document.querySelectorAll('.mobile-contents-link');
   var progressBar = document.getElementById('progressBar');
@@ -764,6 +946,12 @@
     var pct = ((active + 1) / sections.length) * 100;
     progressBar.style.width = pct + '%';
     progressLabel.textContent = 'Section ' + (active + 1) + ' of ' + sections.length;
+  }
+
+  function toggleExercise(id, btn) {
+    var el = document.getElementById(id);
+    var isOpen = el.classList.toggle('open');
+    btn.textContent = btn.textContent.replace(isOpen ? '▾' : '▴', isOpen ? '▴' : '▾');
   }
 
   window.addEventListener('scroll', updateNav, { passive: true });

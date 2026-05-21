@@ -25,6 +25,11 @@ A milestone tracker for the AI Aware project. One entry per completed step or fe
 
 ## Backlog / Ideas
 
+- **Interactive exercises section** — a new section (or standalone page) where readers work through practical scenarios before seeing a worked answer. Show/hide toggle, no backend needed. Proposed exercises:
+  - *Fix the prompt* — given a vague/bad prompt, improve it, then reveal a better version with explanation (ties to S4)
+  - *Spot the hallucination* — plausible AI response with a subtle error baked in; what would you check? (ties to S6)
+  - *Break it down* — given a complex goal, sketch the steps before seeing a worked example (ties to S11)
+  - *What not to share* — a realistic prompt with something the person shouldn't have included; spot it (ties to S7)
 - Quiz / self-assessment at the end of the guide
 - Dark mode toggle
 - Shareable section links (anchor URLs)
