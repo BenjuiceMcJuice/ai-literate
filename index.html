@@ -78,6 +78,24 @@
       color: var(--text-muted);
       white-space: nowrap;
     }
+    .feedback-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .feedback-btn:hover { background: var(--blue-light); }
+    @media (max-width: 700px) {
+      .feedback-btn { padding: 6px 10px; font-size: 0.75rem; }
+    }
 
     /* ── Layout ── */
     .layout {
@@ -451,6 +469,85 @@
     }
     .exercise-answer.open { display: block; }
 
+    /* Feedback modal */
+    .feedback-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 300;
+      background: rgba(0,0,0,0.4);
+      padding: 24px 16px;
+      overflow-y: auto;
+    }
+    .feedback-overlay.open { display: block; }
+    .feedback-panel {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+    .feedback-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .feedback-panel-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .feedback-close {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+    }
+    .feedback-sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
+    .feedback-field { margin-bottom: 12px; }
+    .feedback-field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .feedback-field input,
+    .feedback-field select,
+    .feedback-field textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 12px;
+      background: var(--bg);
+    }
+    .feedback-field textarea { resize: vertical; min-height: 80px; }
+    .feedback-submit {
+      width: 100%;
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 18px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.15s;
+    }
+    .feedback-submit:hover { background: #1d4ed8; }
+    .feedback-submit:disabled { opacity: 0.6; cursor: default; }
+    .feedback-error { color: #be123c; font-size: 0.85rem; margin-bottom: 12px; }
+    .feedback-success { font-size: 0.9rem; color: var(--text); }
+    .feedback-success strong { color: var(--blue); }
+
     /* Footer */
     footer {
       text-align: center;
@@ -471,6 +568,7 @@
       <div class="progress-bar" id="progressBar"></div>
     </div>
     <div class="progress-label" id="progressLabel">Section 1 of 13</div>
+    <button class="feedback-btn" onclick="openFeedback()">Feedback</button>
   </div>
 </header>
 
@@ -973,6 +1071,50 @@
   <span style="margin-top:10px; display:inline-block;">Got a question? <a href="mailto:benjuice.apps@gmail.com" style="color: var(--blue); text-decoration: none;">Q&amp;A — benjuice.apps@gmail.com</a></span>
 </footer>
 
+<div class="feedback-overlay" id="feedbackOverlay" onclick="closeFeedbackOnBackdrop(event)">
+  <div class="feedback-panel">
+    <div id="feedbackFormWrap">
+      <div class="feedback-panel-header">
+        <h3>Got feedback?</h3>
+        <button class="feedback-close" onclick="closeFeedback()" aria-label="Close">✕</button>
+      </div>
+      <p class="feedback-sub">Found a bug, spotted something wrong, or want to suggest a section? Let us know.</p>
+      <form id="feedbackForm" onsubmit="submitFeedback(event)">
+        <div class="feedback-field">
+          <label for="fbName">Your name</label>
+          <input type="text" id="fbName" name="name" placeholder="what do we call you" required autocomplete="name">
+        </div>
+        <div class="feedback-field">
+          <label for="fbEmail">Your email (optional)</label>
+          <input type="email" id="fbEmail" name="email" placeholder="if you want a reply" autocomplete="email">
+        </div>
+        <div class="feedback-field">
+          <label for="fbType">What's this about</label>
+          <select id="fbType" name="type">
+            <option value="bug">found a bug</option>
+            <option value="content">something's wrong / unclear</option>
+            <option value="request">suggest a section or example</option>
+            <option value="hi">just saying hi</option>
+          </select>
+        </div>
+        <div class="feedback-field">
+          <label for="fbMessage">Message</label>
+          <textarea id="fbMessage" name="message" placeholder="go ahead..." required></textarea>
+        </div>
+        <p class="feedback-error" id="feedbackError" style="display:none;">Something went wrong — try again in a moment.</p>
+        <button class="feedback-submit" id="feedbackSubmitBtn" type="submit">Send feedback</button>
+      </form>
+    </div>
+    <div id="feedbackSuccessWrap" style="display:none;">
+      <div class="feedback-panel-header">
+        <h3>Got it!</h3>
+        <button class="feedback-close" onclick="closeFeedback()" aria-label="Close">✕</button>
+      </div>
+      <p class="feedback-success">Your message has been logged as <strong id="feedbackRef"></strong>. We'll take a look and get back to you if needed.</p>
+    </div>
+  </div>
+</div>
+
 <script>
   var sections = ['s0','s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13'];
   var navItems = document.querySelectorAll('.nav-item');
@@ -1037,6 +1179,70 @@
 
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
+
+  // ── Feedback ──
+  var FEEDBACK_API_URL = 'https://benjuicey-feedback.benjuicemcjuice.workers.dev';
+  var feedbackOverlay = document.getElementById('feedbackOverlay');
+
+  function openFeedback() {
+    document.getElementById('feedbackFormWrap').style.display = 'block';
+    document.getElementById('feedbackSuccessWrap').style.display = 'none';
+    feedbackOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeFeedback() {
+    feedbackOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeFeedbackOnBackdrop(e) {
+    if (e.target === feedbackOverlay) closeFeedback();
+  }
+
+  function submitFeedback(e) {
+    e.preventDefault();
+    var form = document.getElementById('feedbackForm');
+    var errorEl = document.getElementById('feedbackError');
+    var submitBtn = document.getElementById('feedbackSubmitBtn');
+    errorEl.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    var data = {
+      appId: 'ai-literate',
+      name: form.elements['name'].value,
+      email: form.elements['email'].value,
+      type: form.elements['type'].value,
+      message: form.elements['message'].value
+    };
+
+    fetch(FEEDBACK_API_URL + '/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function(res) {
+        return res.json().then(function(json) { return { ok: res.ok, json: json }; });
+      })
+      .then(function(result) {
+        if (result.ok && result.json.success) {
+          document.getElementById('feedbackRef').textContent = result.json.ref || '';
+          document.getElementById('feedbackFormWrap').style.display = 'none';
+          document.getElementById('feedbackSuccessWrap').style.display = 'block';
+          form.reset();
+        } else {
+          errorEl.style.display = 'block';
+        }
+      })
+      .catch(function() {
+        errorEl.style.display = 'block';
+      })
+      .finally(function() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send feedback';
+      });
+  }
 </script>
 
 </body>
