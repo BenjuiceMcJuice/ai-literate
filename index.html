@@ -588,7 +588,7 @@
     <button class="mobile-contents-link" onclick="jumpToMobile('s5')">5. Understanding Tokens</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s6')">6. Hallucinations</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s7')">7. Privacy and Data</button>
-    <button class="mobile-contents-link" onclick="jumpToMobile('s8')">8. Is it Cheating?</button>
+    <button class="mobile-contents-link" onclick="jumpToMobile('s8')">8. AI as a Study Partner</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s9')">9. Getting the Most Out of AI</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s10')">10. Example Use Cases</button>
     <button class="mobile-contents-link" onclick="jumpToMobile('s11')">11. Working Through a Bigger Project</button>
@@ -610,7 +610,7 @@
     <button class="nav-item" onclick="jumpTo('s5')">5. Understanding Tokens</button>
     <button class="nav-item" onclick="jumpTo('s6')">6. Hallucinations</button>
     <button class="nav-item" onclick="jumpTo('s7')">7. Privacy and Data</button>
-    <button class="nav-item" onclick="jumpTo('s8')">8. Is it Cheating?</button>
+    <button class="nav-item" onclick="jumpTo('s8')">8. AI as a Study Partner</button>
     <button class="nav-item" onclick="jumpTo('s9')">9. Getting the Most Out of AI</button>
     <button class="nav-item" onclick="jumpTo('s10')">10. Example Use Cases</button>
     <button class="nav-item" onclick="jumpTo('s11')">11. Working Through a Bigger Project</button>
@@ -626,7 +626,7 @@
       <h2>AI-Literate</h2>
       <p class="tagline">A practical, no-nonsense guide to using AI — whoever you are, whatever you do.</p>
       <p>Whether you've never opened an AI tool or you use one every day, this guide will help you understand what's actually going on, how to get the most out of it, and — just as importantly — where to be careful.</p>
-      <span class="pill">13 sections · 14 min read</span>
+      <span class="pill">13 sections · 17 min read</span>
     </section>
 
     <section class="section" id="s1">
@@ -634,9 +634,13 @@
       <h2>What is Generative AI and How Does it Work?</h2>
       <p>Generative AI (often just called "AI" or "GenAI") is software that generates content — text, images, code, or documents — in response to something you give it. That "something" is called a <strong>prompt</strong>, and it can be words, questions, files, images, or a combination.</p>
       <p>Well-known examples include ChatGPT, Claude, Gemini, and Copilot, among many others.</p>
+      <div class="callout callout-warn">
+        <div class="callout-label">A quick reality check</div>
+        <p>"AI" gets used loosely to mean lots of different things. What actually exists today are <strong>Large Language Models (LLMs)</strong> and <strong>Machine Learning (ML)</strong> — real, specific technologies that are very good at certain tasks, like predicting a likely next word in a sentence. A true "general" artificial intelligence — a machine that actually thinks, understands, or reasons the way a person does — does not exist. Nobody knows for certain whether today's tools are even a step toward that. Worth remembering whenever something is marketed as "AI."</p>
+      </div>
       <div class="callout callout-info">
         <div class="callout-label">Think of it this way</div>
-        <p>AI is a tool — much like a calculator. A calculator doesn't do your maths homework for you in any dishonest sense; it helps you work faster and more accurately. GenAI is the same principle, just applied to a much wider range of tasks.</p>
+        <p>AI is a tool — much like a calculator. A calculator doesn't do your maths homework for you in any dishonest sense; it helps you work faster and more accurately. GenAI is the same principle, just applied to a much wider range of tasks. It's still worth being able to do the maths yourself, though — a calculator is only useful to someone who already has a rough sense of what the right answer should look like. The same is true here.</p>
       </div>
     </section>
 
@@ -646,10 +650,11 @@
       <p>AI tools are trained on vast amounts of text — a huge portion of the written internet. This includes academic research papers, books, forums, news articles, code repositories, and yes, the occasional angry rant someone posted online at 2am.</p>
       <p>This means AI can be excellent on well-documented topics — coding, widely covered subjects, established processes — but may be less reliable on niche, recent, or contested topics.</p>
       <div class="callout callout-warn">
-        <div class="callout-label">Important</div>
+        <div class="callout-label">Good to know</div>
         <p><strong>AI does not work like a search engine.</strong> It doesn't "look things up" when you ask a question. Instead, it learned statistical patterns during training — which words, ideas, and structures tend to follow others. When you send a message, it predicts the most coherent and relevant response based on those patterns.</p>
       </div>
-      <blockquote>Think of it less like a library and more like a very well-read colleague who has absorbed an enormous amount of information and can synthesise it on demand — but who can also occasionally misremember things, fill in gaps with plausible-sounding nonsense, or state something completely wrong with total confidence. The last bit is important enough that it gets its own section.</blockquote>
+      <blockquote>Think of it less like a library and more like a very well-read tutor who has absorbed an enormous amount of information and can synthesise it on demand — but who can also occasionally misremember things, fill in gaps with plausible-sounding nonsense, or state something completely wrong with total confidence. The last bit is important enough that it gets its own section.</blockquote>
+      <p>Because of this, it's worth building the habit of checking things yourself with a real search engine — both before you lean on an AI's answer for anything that matters, and afterwards if something feels off.</p>
     </section>
 
     <section class="section" id="s3">
@@ -662,6 +667,14 @@
         <li><strong>You can give AI a role.</strong> Starting with "Act as an experienced project manager..." can meaningfully shape the tone and focus of responses.</li>
         <li><strong>You can always ask for a redo.</strong> If the first response isn't right, ask it to explain, simplify, or try again.</li>
       </ul>
+      <p style="margin-top:16px;"><strong>A simple structure for any prompt:</strong></p>
+      <ol class="step-list">
+        <li><strong>Say what you're trying to do.</strong> One or two sentences on the actual problem or goal.</li>
+        <li><strong>Give the relevant background.</strong> Include the data, context, or constraints AI needs — don't make it guess your situation.</li>
+        <li><strong>Explain the approach you want.</strong> If you have a preferred method, order, or logic in mind, say so.</li>
+        <li><strong>Say what "done" looks like.</strong> The clearer your objective, the easier it is for AI to tell when it's actually finished the job.</li>
+      </ol>
+      <p style="margin-top:12px; color: var(--text-muted); font-size: 0.93rem;">You'll get to practise this in Section 13.</p>
     </section>
 
     <section class="section" id="s4">
@@ -700,6 +713,10 @@
         <div class="callout-label">Context matters</div>
         <p><strong>Start a new conversation when you switch topics.</strong> Every message you send causes the tool to re-process the entire conversation history — so a long, mixed conversation quietly racks up token usage in the background. More importantly, when you mix topics, the AI starts trying to connect things that aren't related, and the quality of its responses drops. A fresh conversation gives it a clean slate.</p>
       </div>
+      <div class="callout callout-info">
+        <div class="callout-label">There's a real-world cost too</div>
+        <p>Every message you send to an AI tool uses real energy — and, at the data-centre level, often real water for cooling. It's not a reason to avoid AI, but it is a reason to be a bit deliberate: don't paste in huge documents you don't need to, and don't regenerate the same response five times out of habit rather than need.</p>
+      </div>
     </section>
 
     <section class="section" id="s6">
@@ -709,7 +726,7 @@
         <div class="callout-label">Critical</div>
         <p><strong>AI can and does make things up.</strong> This is known as "hallucination." It will sometimes state incorrect facts, fabricate references, invent statistics, or produce plausible-sounding but entirely wrong information — with complete confidence and no indication that anything is amiss.</p>
       </div>
-      <p>This is not a bug that will simply be fixed one day. It is a characteristic of how these models work.</p>
+      <p>This is not a bug that will simply be fixed one day. It is a characteristic of how these models work. This is exactly where the search-engine habit from Section 2 earns its keep.</p>
       <ul>
         <li>Never use AI output for anything important without checking it</li>
         <li>Be especially cautious with specific facts, figures, dates, names, and citations</li>
@@ -736,6 +753,10 @@
     <section class="section" id="s7">
       <div class="section-number">Section 7</div>
       <h2>Privacy and Data — What to Share and What Not To</h2>
+      <div class="callout callout-warn">
+        <div class="callout-label">If it's free, you're the product</div>
+        <p>Free AI tools have to pay for the huge amount of computing power they use somehow. Often that's by using what you type to improve their models, or — same as free social media — by building a profile of you to sell access to. This isn't unique to AI, but it's worth carrying into every free tool you use: if you're not paying for it, ask what you're paying with instead.</p>
+      </div>
       <p>Anything you type into an AI tool may be stored, reviewed, or used by the provider depending on their terms of service. For personal use, it's worth reading the small print.</p>
       <p>For professional or work use, this becomes more important. Many organisations have specific policies on what can and cannot be shared with external AI tools.</p>
       <ul>
@@ -743,29 +764,37 @@
         <li>Be aware that some corporate AI deployments are specifically designed to keep data within a secure environment — know which you're using.</li>
         <li>When in doubt, anonymise or generalise the information before sharing it.</li>
       </ul>
+      <div class="callout callout-warn">
+        <div class="callout-label">Building things with AI</div>
+        <p>If you use AI to write code or build a tool and you don't understand the code it produces, you have no way to know whether it's insecure, doing something you didn't ask for, or quietly broken — and if it stops working, you might not be able to fix it either. Never connect anything AI-built to real personal or financial information: passwords, bank details, personal records. This matters even more for anything <strong>installed</strong> on your device, since it runs with real access to your files and system, not inside a safe, sandboxed chat window.</p>
+      </div>
+      <div class="callout callout-info">
+        <div class="callout-label">Deepfakes and manipulated media</div>
+        <p>AI can now generate convincing fake photos, audio, and video of real people. Don't create or share this kind of content to deceive someone — and stay a little sceptical of "shocking" images, clips, or voice recordings you see online, for the same reason you stay sceptical of AI-written text: it can look completely real and still be entirely fake.</p>
+      </div>
     </section>
 
     <section class="section" id="s8">
       <div class="section-number">Section 8</div>
-      <h2>Is it Cheating?</h2>
-      <p><strong>Using AI is not cheating by default.</strong> It's a tool. Using a calculator is not cheating. Using a spell-checker is not cheating. Using AI to help you work faster, clearer, or better is not cheating — in most contexts.</p>
+      <h2>AI as a Study Partner</h2>
+      <p>Think of AI less like something that does your homework for you, and more like a tutor sitting next to you — helping you think through an idea, explaining something you're stuck on, or helping you say what you already mean more clearly. <strong>Used that way, it's not cheating.</strong> Using a calculator isn't cheating. Using a spell-checker isn't cheating. Using AI to help you develop and express your own thinking works the same way — in most contexts.</p>
       <div class="compare">
         <div class="compare-col no">
           <h4>It is cheating when...</h4>
           <ul>
-            <li>You're being assessed on your own knowledge in an exam or interview</li>
-            <li>You submit AI-generated work as your own in an academic setting where original thinking is evaluated</li>
-            <li>You enter AI content into a competition that explicitly prohibits it</li>
+            <li>You're being assessed on your own knowledge in an exam, test, or interview</li>
+            <li>You submit AI-generated work as your own where original thinking is what's being graded</li>
+            <li>You enter AI content into a competition or assignment that explicitly prohibits it</li>
             <li>You use it to deceive someone about your own capabilities</li>
           </ul>
         </div>
         <div class="compare-col yes">
           <h4>It is not cheating when...</h4>
           <ul>
-            <li>You have the idea but struggle to express it clearly</li>
-            <li>You could do it yourself but it would take significantly longer</li>
-            <li>You use it to research options or structure your thinking</li>
-            <li>You review, edit, and take responsibility for the output</li>
+            <li>You have the idea but need help expressing it clearly</li>
+            <li>You could do it yourself but it would take a lot longer</li>
+            <li>You use it to explore an idea, research options, or structure your thinking</li>
+            <li>You review, edit, and take responsibility for the final result</li>
           </ul>
         </div>
       </div>
@@ -773,6 +802,7 @@
         <div class="callout-label">The key principle</div>
         <p>You own and are responsible for anything you send out, regardless of whether AI produced it. If you wouldn't be comfortable defending it if questioned, don't send it.</p>
       </div>
+      <p style="margin-top:16px; color: var(--text-muted); font-size: 0.93rem;">Rules vary by school and by class — some teachers are fine with AI for brainstorming but not for drafting, others have stricter limits. This guide gives you general principles; always check what your actual school or teacher says before assuming.</p>
     </section>
 
     <section class="section" id="s9">
@@ -781,12 +811,12 @@
       <ul>
         <li><strong>Start with clarity.</strong> Before you open a conversation, spend a moment thinking about what you actually want. A clear goal produces a better result.</li>
         <li><strong>Chunk your work.</strong> Don't ask AI to take two complex documents, compare them, and produce a new one all in one go. The output will almost certainly be poor. Break the task into steps and work through them one at a time.</li>
-        <li><strong>Treat it like a capable but occasionally unreliable colleague.</strong> It will sometimes misinterpret your instructions, make assumptions, or go off in completely the wrong direction. That's normal — correct it, redirect it, and carry on.</li>
-        <li><strong>Experiment.</strong> Some AI tools are better at certain tasks than others. It's worth trying a few approaches to find what works best for your specific needs.</li>
+        <li><strong>Treat it like a capable but occasionally unreliable assistant.</strong> It will sometimes misinterpret your instructions, make assumptions, or go off in completely the wrong direction. That's normal — correct it, redirect it, and carry on.</li>
+        <li><strong>Experiment.</strong> Some AI tools are better at certain tasks than others. It's worth trying a few to see what works best for your needs — think of it like trying different apps or different strategies in a game: the "best" one depends entirely on what you're trying to do.</li>
       </ul>
       <div class="callout callout-warn">
         <div class="callout-label">One conversation, one topic</div>
-        <p>This is one of the most common mistakes. When you mix topics in a single conversation, the AI tries to find connections between things that aren't connected — and the outputs quietly get worse. You may not notice it happening. When you're done with a topic, start fresh. Think of it like a new colleague joining a meeting: they do better when they know what the meeting is actually about.</p>
+        <p>This is one of the most common mistakes. When you mix topics in a single conversation, the AI tries to find connections between things that aren't connected — and the outputs quietly get worse. You may not notice it happening. When you're done with a topic, start fresh. Think of it like a substitute teacher stepping into a lesson already in progress: they do a much better job once someone fills them in on what's actually going on.</p>
       </div>
       <div class="callout callout-tip">
         <div class="callout-label">Meta tip</div>
@@ -943,7 +973,7 @@
 
       <div class="callout callout-info">
         <div class="callout-label">If you're reading and something feels off</div>
-        <p>Look for clusters of signals, not one thing in isolation. Compare it to how the person normally writes. If it matters — a job application, a piece of journalism, a colleague's report — it's reasonable to ask directly.</p>
+        <p>Look for clusters of signals, not one thing in isolation. Compare it to how the person normally writes. If it matters — a job application, a piece of journalism, a classmate's essay — it's reasonable to ask directly.</p>
       </div>
 
       <div class="callout callout-warn">
@@ -978,14 +1008,14 @@
             <div class="compare-col yes">
               <h4>Improved — gives AI</h4>
               <ul>
-                <li>Audience: senior leadership</li>
-                <li>Topic: Q2 sales results</li>
-                <li>Length: 10 minutes</li>
+                <li>Audience: your class and teacher</li>
+                <li>Topic: your science fair project results</li>
+                <li>Length: 5 minutes</li>
                 <li>A structure and a tone to aim for</li>
               </ul>
             </div>
           </div>
-          <div class="scenario-box" style="font-style: normal; color: var(--text);">"I have a 10-minute presentation to the senior leadership team on Friday about our Q2 sales results. Help me structure it — I want to open with the headline number, explain what drove it, then close with what we're doing next. Keep the language direct and clear."</div>
+          <div class="scenario-box" style="font-style: normal; color: var(--text);">"I have a 5-minute presentation to my class on Friday about my science fair project. Help me structure it — I want to open with what I found, explain how I tested it, then close with what I'd try next. Keep the language clear and confident, not overly formal."</div>
           <div class="callout callout-tip">
             <div class="callout-label">Why it works</div>
             <p>The AI now has the audience, the goal, the structure, and the tone. It can give you something genuinely useful rather than a generic template.</p>
