@@ -4,6 +4,16 @@ A milestone tracker for the AI Aware project. One entry per completed step or fe
 
 ---
 
+## Feedback: shared Benjuicey Apps standard
+
+Feedback follows the cross-app standard — see the central docs in `benjuicey-apps/docs/`: **feedback-standard.md** (the standard) and **feedback-how-it-works.md** (end-to-end flow + how Claude triages submissions). Submissions land in the one shared backend, stamped with this app's trigram **`LIT`**.
+
+- **Mechanism:** this app has its own styled modal (`index.html`, "Got feedback?"), which POSTs the uniform schema (`appId: 'ai-literate'`, name, email, type, message) to the shared Worker (`benjuicey-feedback.benjuicemcjuice.workers.dev/submit`). Predates the shared widget; kept because it matches the app's design.
+- **Categories** aligned to canonical `bug`/`content`/`request`/`general` on 2026-07-11 (was `hi`, now `general`).
+- **Possible future tidy-up:** migrate to the shared `/widget.js` drop-in so there's one less bespoke form to maintain — optional, not required for compliance since the schema already matches.
+
+---
+
 ## Milestones
 
 ### v1.2 — Renamed to AI-Literate (2026-05-21)
